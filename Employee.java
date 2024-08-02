@@ -9,9 +9,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Employee {
+	//Integer 
 	int id;
     
     String name;
@@ -26,7 +28,35 @@ public class Employee {
      
     double salary;
      
-    public Employee(int id, String name, int age, String gender, String department, int yearOfJoining, double salary) 
+    public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public void setYearOfJoining(int yearOfJoining) {
+		this.yearOfJoining = yearOfJoining;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public Employee(int id, String name, int age, String gender, String department, int yearOfJoining, double salary) 
     {
         this.id = id;
         this.name = name;
@@ -230,7 +260,7 @@ public class Employee {
 			    System.out.println("----------------------------");
 			             
 		List<Employee> list = entry.getValue();
-			             
+		 
 		for (Employee e : list) 
 		{
 			  System.out.println(e.getName());
@@ -244,7 +274,24 @@ public class Employee {
 	System.out.println("Age : "+oldestEmployee.getAge());       
 	System.out.println("Department : "+oldestEmployee.getDepartment());
 	
+	Predicate pp=e -> ((Employee) e).getYearOfJoining() > 2015;
+	Predicate pp1=e -> ((Employee) e).getYearOfJoining() > 2014;
+	employeeList.stream()
+    .filter(pp.and(pp1))
+   // .filter( pp && pp1   )
+    .forEach(System.out::println);
 	
+	//----------
 	
+	/*
+	 * List<Employee> employeeOlder32 = el.stream() .filter(i -> i.getAge() >= 32)
+	 * .toList(); // for Java 16+ or collect(Collectors.toList()) for earlier
+	 * versions
+	 * 
+	 * employeeOlder32.forEach(employee -> employee.setSalary(employee.getSalary() *
+	 * 3 / 2) );
+	 */
+		
+		 
 	}
 }

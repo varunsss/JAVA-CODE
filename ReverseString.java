@@ -1,41 +1,37 @@
-package com.java8;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+package com.logic;
 
 public class ReverseString {
-	public static void main(String[] args) {
-		
-	// reverse string in 8
-	String reverse="asd";
-	reverse.chars().mapToObj(c->(char)c).sorted((a,b)->b.compareTo(a)).forEach(System.out::print);
-	System.out.println("-------------");
-	//--------
-	 String originalString = "Hello, World!";  
-     IntStream charStream = originalString.chars();  
-     Stream<String> charStringStream = charStream.mapToObj(ch -> String.valueOf((char) ch));  
-     String reversedString = charStringStream.reduce((acc, ch) -> ch + acc).orElse("");  
-     System.out.println(reversedString); // Output: !dlroW ,olleH  
-     System.out.println("----------");
-     String input = "abc";
-     Comparator<String> comparator = (s1,s2) -> -1;
-     String reversed = Arrays.stream(input.split(""))
-             .sorted(comparator)
-             .collect(Collectors.joining());
-     System.out.println(reversed);
-     
-     String str = "INDIA";
-     IntStream.range(0, str.length()).forEach(i -> System.out.print(str.charAt(str.length() - 1 - i)));
-    
-     String original = "Java";
-     System.out.println("----------------");
-     String reversed1 = original.chars()  // Convert to stream
-         .mapToObj(c -> (char) c)        // Convert to Character stream
-         .reduce("", (s, c) -> c + s, (s1, s2) -> s2 + s1);
-     System.out.println(reversed1);  // Output: avaJ
+public static void main(String[] args) {
+	
+	System.out.println("-------------------------1");
+	String strrev1="java";
+	String strrev2="";
+	char char1;
+	for(int i=0;i<=strrev1.length()-1;i++) {
+		char1=strrev1.charAt(i);
+		strrev2=char1+strrev2;
 	}
+	System.out.println("First way of Reversed word :"+strrev2);
+	
+	System.out.println("-------------------------2");
+	String strrev11="core";
+	String strrev22="";
+	  for(int i = strrev11.length() - 1; i >= 0; i--)
+	    {
+		  strrev22 = strrev22 + strrev11.charAt(i);
+	    }
+	    System.out.println("Second way of Reversed word : "+ strrev22);
+	     
+	System.out.println("-------------------------3");
+	String strrev3="spring";
+	char[] char2 = strrev3.toCharArray();
 
+	for(int i = char2.length - 1; i >= 0; i--) {
+		System.err.print(char2[i]);
+	}
+	System.out.println("-------------------------4");
+	String strrev4="xyz";
+	strrev4.chars().mapToObj(c->(char)c).sorted((a,b)->b.compareTo(a)).forEach(System.out::print);
+	 
+}
 }

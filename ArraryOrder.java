@@ -6,8 +6,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.util.stream.Collector;
@@ -248,23 +251,46 @@ public class ArraryOrder {
          List<Employee> emplist1= employeeList.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).collect(Collectors.toList());
          emplist1.forEach(System.out::println);
      	 
-         //Logical Q
-        
-         List<Integer> list99 = Arrays.asList(1, 2, 3, 3, 4, 4, 5);
-         List<Integer> duplicates99 = new ArrayList<>();
-         Set<Integer> set99 = list99.stream()
-           .filter(i -> Collections.frequency(list99, i) > 1)
-           .collect(Collectors.toSet());
-         duplicates.addAll(set111);
-          System.out.println("Duplicate elements: " + duplicates);
-          
-          String[] strArrays999 = { "Cabbage", "Kale", "Radish", "Kale",
-          "Garlic", "Ginger","Garlic","Carrot","Kale"};
-          List<String> list999 = Arrays.asList(strArrays999);
-          Set<String> setVeg999 = new HashSet(list999);
-          System.out.println("setVeg :"+setVeg999);
-          for (String veg : setVeg999) {
-              System.out.println(veg + "\t\t"+ Collections.frequency(list9, veg));
-          }
+        List<Integer> listt=Arrays.asList(10,20,30,40,50);
+  		 
+  		listt.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+  		 
+  		listt.stream().sorted(Comparator.naturalOrder()).forEach(System.out::println);
+  		//--------------------------------------------------------------------------------
+  		Optional<Integer> no1=listt.stream().sorted(Comparator.reverseOrder()).findFirst();  
+  		System.out.println("max :"+no1.get());
+  		
+  		Optional<Integer> no2=listt.stream().sorted(Comparator.naturalOrder()).findFirst();  
+  		System.out.println("min :"+no2.get());
+  		//----------------------------------------------------------------------------------
+  		int maxxx=listt.stream().max(Integer::compare).get();
+  		System.out.println("max :"+maxxx);
+  		
+  		int maxx=listt.stream().max(Integer::compareTo).get();
+  		System.out.println("maxx :"+maxx);
+  		
+  		int minn=listt.stream().min(Integer::compare).get();
+  		System.out.println("minn :"+minn);
+  		//-----new 
+  		 OptionalInt max11 = listt.stream().mapToInt(Integer::intValue).max();
+  		 System.out.println("Max element: " +max11.getAsInt() );
+  		//---------
+  	  final List<Integer> inputArrayList = Arrays.asList(1, 3, 2, 4, 3, 1, 2);
+      final List<Integer> outputArrayList = inputArrayList.stream()
+              .distinct()
+              .sorted(Comparator.reverseOrder())
+              .collect(Collectors.toList());
+      System.out.println(outputArrayList);  // Output: [4, 3, 2, 1]
+  	  // sum
+      List<Integer> sumNumbers = Arrays.asList(1, 2, 3, 4, 5);
+      IntSummaryStatistics i=sumNumbers.stream().collect(Collectors.summarizingInt(e-> e));
+      System.out.println(i);
+      System.out.println(i.getSum());
+      
+      int sum1=sumNumbers.stream().mapToInt(Integer::intValue).sum();
+      System.out.println(sum1);
+      
+     
+  		
 	}
 }

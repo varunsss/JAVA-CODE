@@ -2,6 +2,7 @@ package com.stream;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -91,9 +92,43 @@ public static void main(String[] args) {
     System.out.println("Most Frequent Element : "+mostFrequentElement.getKey());
     System.out.println("Count : "+mostFrequentElement.getValue());
     
+    //--------------------------
+    System.out.println("------Count : ");
+    char[] charArray = new char[]{'a', 'b', 'c', 'a', 'd', 'c'};
+
+    // Create a map to store the count of each character
+    Map<Character, Integer> charCountMap1 = new HashMap<>();
+
+    // Iterate over the character array and update the map
+    for (char c : charArray) {
+        if (charCountMap1.containsKey(c)) {
+        	charCountMap1.put(c, charCountMap1.get(c) + 1);
+        } else {
+        	charCountMap1.put(c, 1);
+        }
+    }
+
+    // Iterate over the map and print the duplicate characters
+    for (Map.Entry<Character, Integer> entry : charCountMap1.entrySet()) {
+        if (entry.getValue() > 0) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
     
-    
-    
+    //--------------------
+    System.out.println( " ---------------- "  );
+    String input = "JavaJavaEE";
+
+    // convert string into stream
+    Map < Character, Long > result = input
+        .chars().mapToObj(c -> (char) c)
+        .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+
+    result.forEach((k, v) -> {
+        if (v > 1) {
+            System.out.println(k + " : " + v);
+        }
+    });
     
 	}
 

@@ -1,11 +1,14 @@
 package com.stream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 public class SecondSalary {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
         List<Employee1> employees = new ArrayList<>();
         employees.add(new Employee1(1, "John Doe", "Dev", 70000));
         employees.add(new Employee1(2, "Jane shina", "Dev", 60000));
@@ -38,7 +41,16 @@ public class SecondSalary {
 			 
 			 System.out.println("Second highest paid employee in " + dept + ": " +  secondHighestPaidEmp.getName()); });
 			 
+		  // 2nd high
+		  List<Integer> lisNo= Arrays.asList(500,100,300,400,200);
+		  Integer secNo1 =lisNo.stream().sorted((a,b)->(b-a)).skip(1).findFirst().get();
+		  System.out.println(secNo1);
+		  Optional<Integer> secNo =lisNo.stream().sorted((a,b)->(b-a)).skip(1).findFirst();
+		  System.out.println(secNo.get());
 		  
 		 
+		 
 	}
+	
+	 
 }

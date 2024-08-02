@@ -1,112 +1,38 @@
-package com.java8;
+package com.stream;
 
-class Employee1 implements Cloneable {
-	
-	void main1() {
-		Employee1 e1=new Employee1();
-		try {
-			e1.clone();
-		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	Employee1(){}
-    private int id;
+public class Employee1 {
+	private int id;
     private String name;
-    private int age;
-    private long salary;
-    private String gender;
-    private String deptName;
-    private String city;
-    private int yearOfJoining;
+    private String department;
+    private double salary;
+    public String no;
+    
+    
 
-    public Employee1(int id, String name, int age, long salary, String gender, String deptName, String city, int yearOfJoining) {
+    public   Employee1(int id, String name, String department, double salary) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.department = department;
         this.salary = salary;
-        this.gender = gender;
-        this.deptName = deptName;
-        this.city = city;
-        this.yearOfJoining = yearOfJoining;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee1{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", salary=" + salary +
-                ", gender='" + gender + '\'' +
-                ", deptName='" + deptName + '\'' +
-                ", city='" + city + '\'' +
-                ", yearOfJoining='" + yearOfJoining + '\'' +
-                '}';
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getDepartment() {
+        return department;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public long getSalary() {
+    public double getSalary() {
         return salary;
     }
-
-    public void setSalary(long salary) {
-        this.salary = salary;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public int getYearOfJoining() {
-        return yearOfJoining;
-    }
-
-    public void setYearOfJoining(int yearOfJoining) {
-        this.yearOfJoining = yearOfJoining;
-    }
+    public static void main(String[] args) {
+     
+    	 
+	}
 }
